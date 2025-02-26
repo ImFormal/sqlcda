@@ -1,4 +1,5 @@
 import java.util.*;
+import com.maximet.sqlcda.db.bdd;
 
 public class Main {
 
@@ -309,7 +310,9 @@ public class Main {
          */
 
         //averageHashMap
-        System.out.println("-------NotesHashMap-------");
-        averageMap();
+        //System.out.println("-------NotesHashMap-------");
+        //averageMap();
+
+        bdd.getConnexion();
     }
 }

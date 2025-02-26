@@ -18,4 +18,8 @@ public class bdd {
             throw new RuntimeException(e);
         }
     }
+
+    public static Connection getConnexion() {
+        return connexion;
+    }
 }
