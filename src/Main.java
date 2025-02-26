@@ -1,5 +1,8 @@
+import java.sql.ConnectionBuilder;
 import java.util.*;
-import com.maximet.sqlcda.db.bdd;
+
+import com.maximet.sqlcda.db.Bdd;
+import com.maximet.sqlcda.model.User;
 
 public class Main {
 
@@ -313,6 +316,8 @@ public class Main {
         //System.out.println("-------NotesHashMap-------");
         //averageMap();
 
-        bdd.getConnexion();
+        Bdd.getConnexion();
+        User user1 = new User("Maxime", "Thubert", "thubert.maxime.pro@gmail.com", "1234");
+        System.out.println(user1.toString());
     }
 }
