@@ -318,9 +318,14 @@ public class Main {
 
         Bdd.getConnexion();
         User user1 = new User("Maxime", "Thubert", "thubert.maxime.pro@gmail.com", "1234");
+        User user2 = new User("Kévin", "Lionnet", "kevin.lionnet@gmail.com", "1234");
+        User user3 = new User("Quentin", "Petit", "quentin.petit@gmail.com", "1234");
+        User user4 = new User("Florian", "Nickels", "florian.nickels@gmail.com", "1234");
+        User user5 = new User("Lucile", "Zilbermann", "lucile.zilbermann@gmail.com", "1234");
         //UserRepository.save(user1);
         //System.out.println(UserRepository.findByEmail(user1.getEmail()));
-        System.out.println(UserRepository.findByEmail("ofrofk"));
-        System.out.println(UserRepository.findByEmail(user1.getEmail()));
+        //System.out.println(UserRepository.findByEmail("ofrofk"));
+        //System.out.println(UserRepository.findByEmail(user1.getEmail()));
+        System.out.println(UserRepository.findAll());
     }
 }

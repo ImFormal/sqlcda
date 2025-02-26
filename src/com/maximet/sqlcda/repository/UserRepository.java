@@ -6,6 +6,8 @@ import com.maximet.sqlcda.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepository {
     //Attributs
@@ -72,30 +74,57 @@ public class UserRepository {
         User getUser = null;
 
         try{
-            if(isExist(email)) {
-                String sql = "SELECT id, firstname, lastname, email FROM users WHERE email = ?";
+            String sql = "SELECT id, firstname, lastname, email FROM users WHERE email = ?";
 
-                //Prépare la requête
-                PreparedStatement preparedStatement = connexion.prepareStatement(sql);
+            //Prépare la requête
+            PreparedStatement preparedStatement = connexion.prepareStatement(sql);
 
-                //Bind le paramètre
-                preparedStatement.setString(1, email);
+            //Bind le paramètre
+            preparedStatement.setString(1, email);
 
-                //Récupérer le résultat
-                ResultSet resultSet = preparedStatement.executeQuery();
+            //Récupérer le résultat
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-                while (resultSet.next()) {
-                    getUser = new User();
-                    getUser.setId(resultSet.getInt("id"));
-                    getUser.setFirstname(resultSet.getString("firstname"));
-                    getUser.setLastname(resultSet.getString("lastname"));
-                    getUser.setEmail(resultSet.getString("email"));
-                }
+            while (resultSet.next()) {
+                getUser = new User();
+                getUser.setId(resultSet.getInt("id"));
+                getUser.setFirstname(resultSet.getString("firstname"));
+                getUser.setLastname(resultSet.getString("lastname"));
+                getUser.setEmail(resultSet.getString("email"));
             }
         } catch (Exception e){
             e.printStackTrace();
         }
 
         return getUser;
+    }
+
+    public static List<User> findAll(){
+
+        List<User> userList = new ArrayList<>();
+        User getUser = null;
+
+        try{
+            String sql = "SELECT id, firstname, lastname, email FROM users";
+
+            //Prépare la requête
+            PreparedStatement preparedStatement = connexion.prepareStatement(sql);
+
+            //Récupérer le résultat
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                getUser = new User();
+                getUser.setId(resultSet.getInt("id"));
+                getUser.setFirstname(resultSet.getString("firstname"));
+                getUser.setLastname(resultSet.getString("lastname"));
+                getUser.setEmail(resultSet.getString("email"));
+                userList.add(getUser);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return userList;
     }
 }
