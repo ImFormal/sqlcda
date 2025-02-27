@@ -127,4 +127,32 @@ public class UserRepository {
 
         return userList;
     }
+
+    public static User update(User updateUser, String email){
+
+        User newUser = null;
+
+        try{
+            //Requête
+            String sql = "UPDATE users SET firstname = ?, lastname = ?, email = ?, password = ? WHERE email = ?";
+
+            //Préparer la requête
+            PreparedStatement preparedStatement = connexion.prepareStatement(sql);
+
+            //Bind les paramètres
+            preparedStatement.setString(1, updateUser.getFirstname());
+            preparedStatement.setString(2, updateUser.getLastname());
+            preparedStatement.setString(3, updateUser.getEmail());
+            preparedStatement.setString(4, updateUser.getPassword());
+            preparedStatement.setString(5, email);
+
+            //Exécuter la requête
+            preparedStatement.executeUpdate();
+            newUser = new User(updateUser.getFirstname(), updateUser.getLastname(), updateUser.getEmail(), updateUser.getPassword());
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return newUser;
+    }
 }

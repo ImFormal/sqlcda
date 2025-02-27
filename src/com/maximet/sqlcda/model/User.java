@@ -7,6 +7,7 @@ public class User {
     private String lastname;
     private String email;
     private String password;
+    private Roles roles;
 
     //Constructeur par défaut
     public User(){}
@@ -19,6 +20,7 @@ public class User {
         this.password = password;
     }
 
+    //GETTER_ET_SETTER
     public int getId() {
         return id;
     }
@@ -59,6 +61,14 @@ public class User {
         this.password = password;
     }
 
+    public Roles getRoles(){
+        return roles;
+    }
+
+    public void setRoles(Roles roles){
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -66,6 +76,7 @@ public class User {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
+                ", roles='" + roles + '\'' +
                 "}\n";
     }
 }

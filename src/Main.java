@@ -326,6 +326,8 @@ public class Main {
         //System.out.println(UserRepository.findByEmail(user1.getEmail()));
         //System.out.println(UserRepository.findByEmail("ofrofk"));
         //System.out.println(UserRepository.findByEmail(user1.getEmail()));
+        System.out.println(UserRepository.update(new User("Maxime", "Thubert", "thubert.maxime.pro@gmail.com", "1234"), "thubert.maxime.pro@gmail.com"));
         System.out.println(UserRepository.findAll());
+
     }
 }
